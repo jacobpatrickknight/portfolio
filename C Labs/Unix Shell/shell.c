@@ -17,9 +17,9 @@
 #define DELIMITERS " \n\t\r\a&"
 
 int line_size = MAX_LINE / 2 + 1;
-char history[MAX_HISTORY][MAX_LINE];	// stores commands used
+char history[MAX_HISTORY][MAX_LINE];			// stores commands used
 int command_count = 0;					// counts the number of commands in history
-char *command_copy;						// Used for copying the command line
+char *command_copy;					// Used for copying the command line
 
 char *read_command_line (void);
 char **create_arguments (char *command_line);
@@ -34,8 +34,8 @@ void update_history(char *command_line);
 int main ()
 {
 	char *command_line; 				// command line input
-	char **args;						// arguments separated
-	int should_run = 1;					// flag to determine when to exit program
+	char **args;					// arguments separated
+	int should_run = 1;				// flag to determine when to exit program
 	int background = 0;
 	
 	printf("\n*** Unix Shell ***\n");
