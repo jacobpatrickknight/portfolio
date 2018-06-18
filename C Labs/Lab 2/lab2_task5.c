@@ -10,18 +10,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
- * execute - execute the given command with the given arguments, and the given environment
- * const char *binary - the name of the binary file to load (e.g. /bin/ls)
- * char *const arguments[] - the argv array - remember, argv[0] must be the commnad name
- * char *const envp[] - the array of environment variables for this session
- *
- * note:
- * const char *variable - a string whose contents won't be changed
- * char *const variable[] - an array of pointers (strings) whose content's won't be changed
- *        - but the things the pointers point at may be changed
- */
-
 void execute (const char *binary, char *const arguments[], char *const envp[])
 {
 	if (execve(binary, arguments, envp) < 0)
