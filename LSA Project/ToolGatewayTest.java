@@ -24,39 +24,10 @@ public class ToolGatewayTest
 {
 	
 	private String driver="com.mysql.jdbc.Driver";
-	private String URL="jdbc:mysql://db.cs.ship.edu:3306/swe400-33";
-	private String uname="swe400_3";
-	private String pass="pwd4swe400_3F16";
+	private String URL="";
+	private String uname="";
+	private String pass="";
 	private Connection conn;
-
-	/**
-	 * @author Elisabeth Ostrow
-	 * loads driver and connects to the db
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	@Before
-	public void connect() throws SQLException, ClassNotFoundException
-	{
-		//Dynamically load driver class
-		Class.forName(driver);
-		//Establish connection with DriverManager
-		conn=DriverManager.getConnection(URL, uname, pass);
-		conn.setAutoCommit(false);
-	}
-	
-	/**
-	 * @author Elisabeth Ostrow
-	 * rolls-back changes and closes connection to db
-	 * @throws SQLException
-	 */
-	@After
-	public void disconnect() throws SQLException
-	{
-		////NOTE: conn.rollback() throwing an error. DB changes currently persist
-		conn.rollback();
-		conn.close();
-	}
 	
 	/**
 	 * Tests that the gateway can be initialized
