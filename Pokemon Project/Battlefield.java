@@ -138,59 +138,6 @@ public class Battlefield
 		return computerPokemon;
 	}
 	
-	/**
-	 * @author Aaron Gerber
-	 * @desc Handles the actual simulation of the rounds
-	 * @param playerCommand
-	 */
-	public void handleRound(Command playerCommand)
-	{
-		if(!playerCommand.getTAG().contains("attacked"))
-		{
-			playerCommand.callAction();
-			player_action = playerCommand.getTAG();
-			
-			AI.getAI().getDifficulty().attack();
-			ai_action = "attacked";
-			playerFirst = true;
-		}
-		else
-		{
-			if(getComputerPokemon().getSpeed()>getHumanPokemon().getSpeed())
-			{
-				ai_action = AI.getAI().getDifficulty().fightingAlgorithm();
-				playerCommand.callAction();
-				player_action = playerCommand.getTAG();
-				playerFirst = false;
-			}
-			else
-			{
-				playerCommand.callAction();
-				ai_action = AI.getAI().getDifficulty().fightingAlgorithm();
-				player_action = playerCommand.getTAG();
-				playerFirst = true;
-			}
-		}
-
-		AI.actionUsed = false;
-		
-		if(getComputerPokemon().getCurrentHitPoints()<=0)
-			if(!AI.getAI().getDifficulty().changePokemon())
-				GUI.endSim(true);
-		if(getHumanPokemon().getCurrentHitPoints()<=0)
-		{
-			boolean lose_flag = true;
-			
-			for(int i = 0; i<6 && human.getTeam()[i]!=null; i++)
-			{
-				if(getHuman().getTeam()[i].getCurrentHitPoints()>0)
-					lose_flag = false;
-			}
-			if(lose_flag)
-				GUI.endSim(false);
-		}
-	}
-	
 	public boolean order()
 	{
 		return playerFirst;
