@@ -28,7 +28,6 @@ public class Pokemon
 	private int speed;
 	private int level;
 	
-	private String prevMove;
 	
 	/**
 	 * Constructor for Pokemon
@@ -427,47 +426,4 @@ public class Pokemon
 			return "Invalid move";
 		}
 	}
-
-	/**
-	 * @author Aaron Gerber
-	 * Need these for the gui
-	 * @param p
-	 */
-	public Pokemon(Pokemon p)
-	{
-		name = p.getName();
-		maxHitPoints = p.getCurrentHitPoints();
-		currentHitPoints = p.getMaxHitPoints();
-		attack = p.getAttack();
-		defense = p.getDefense();
-		speed = p.getSpeed();
-		setType(p.getType());
-		level = 0;
-		
-		setMove1(p.getMove1());
-		setMove2(p.getMove2());
-		setMove3(p.getMove3());
-		setMove4(p.getMove4());
-	}
-	
-	public void setType(TYPE type)
-	{
-		switch(type)
-		{
-		case FIRE:
-			this.type = new FireType();
-		case WATER:
-			this.type = new WaterType();
-		case GRASS:
-			this.type = new GrassType();
-		case NORMAL:
-			this.type = new NormalType();
-		}
-	}
-	
-	public String getLastMove()
-	{
-		return prevMove;
-	}
-
 }
